@@ -14,7 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 Route::group(['namespace' => 'Main'], function() {
 
-	Route::get('', 'IndexController');
+	Route::get('', 'IndexController')->name('main.index');
+
+});
+Route::group(['namespace' => 'Post', 'prefix' => 'posts'], function() {
+
+	Route::get('', 'IndexController')->name('post.index');
+	Route::get('{id}', 'ShowController')->name('post.show');
 
 });
 
@@ -34,6 +40,9 @@ Route::group(['namespace' => 'Personal', 'prefix' => 'personal', 'middleware' =>
 	Route::group(['namespace' => 'Comment', 'prefix' => 'commentaries'], function() {
 
 		Route::get('', 'IndexController')->name('personal.comment.index');
+		Route::get('{id}/edit', 'EditController')->name('personal.comment.edit');
+		Route::put('{id}', 'UpdateController')->name('personal.comment.update');
+		Route::delete('{id}', 'DeleteController')->name('personal.comment.delete');
 	});
 
 });

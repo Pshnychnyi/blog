@@ -7,7 +7,7 @@
     <title>Edica :: Home</title>
     <link rel="stylesheet" href="{{asset('assets/vendors/flag-icon-css/css/flag-icon.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/vendors/font-awesome/css/all.min.css')}}">
-    <link rel="stylesheet" href="{{asset('asset("assets/vendors/aos/aos.css")')}}">
+    <link rel="stylesheet" href="{{ asset('assets/vendors/aos/aos.css') }}">
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
     <script src="{{asset('assets/vendors/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('assets/js/loader.js')}}"></script>
@@ -21,38 +21,12 @@
                 <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#edicaMainNav" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="edicaMainNav">
-                    <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="about.html">About</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="blogDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog</a>
-                            <div class="dropdown-menu" aria-labelledby="blogDropdown">
-                                <a class="dropdown-item" href="blog.html">Blog Archive</a>
-                                <a class="dropdown-item" href="blog-single.html">Blog Post</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
-                            <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-                                <a class="dropdown-item" href="404.html">404</a>
-                                <a class="dropdown-item" href="coming-soon.html">Coming Soon</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contact</a>
-                        </li>
-                    </ul>
+                <div class="collapse navbar-collapse d-flex justify-content-between" id="edicaMainNav">
+                    <div></div>
+
                     <ul class="navbar-nav mt-2 mt-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="#"><span class="flag-icon flag-icon-squared rounded-circle flag-icon-gb"></span> Eng</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Download</a>
+                            <a class="nav-link btn btn-light" href="{{ route('main.index') }}">Блог</a>
                         </li>
                     </ul>
                 </div>
@@ -61,25 +35,13 @@
     </header>
 
     @yield('content')
-
-    <section class="edica-footer-banner-section">
-        <div class="container">
-            <div class="footer-banner" data-aos="fade-up">
-                <h1 class="banner-title">Download it now.</h1>
-                <div class="banner-btns-wrapper">
-                    <button class="btn btn-success"> <img src="assets/images/apple@1x.svg" alt="ios" class="mr-2"> App Store</button>
-                    <button class="btn btn-success"> <img src="assets/images/android@1x.svg" alt="android" class="mr-2"> Google Play</button>
-                </div>
-                <p class="banner-text">Add some helper text here to explain the finer details of your <br> product or service.</p>
-            </div>
-        </div>
-    </section>
+    
     <footer class="edica-footer" data-aos="fade-up">
         <div class="container">
             <div class="row footer-widget-area">
                 <div class="col-md-3">
                     <a href="index.html" class="footer-brand-wrapper">
-                        <img src="assets/images/logo.svg" alt="edica logo">
+                        <img src="public/assets/images/logo.svg" alt="edica logo">
                     </a>
                     <p class="contact-details">hello@edica.com</p>
                     <p class="contact-details">+23 3000 000 00</p>
@@ -136,10 +98,10 @@
             </div>
         </div>
     </footer>
-    <script src="{{asset('assets/vendors/popper.js/popper.min.js')}}"></script>
-    <script src="{{asset('assets/vendors/bootstrap/dist/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('assets/vendors/aos/aos.js')}}"></script>
-    <script src="{{asset('assets/js/main.js')}}"></script>
+    <script src="{{ asset('assets/vendors/popper.js/popper.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/bootstrap/dist/js/bootstrap.min.js')  }}"></script>
+    <script src="{{ asset('assets/vendors/aos/aos.js')  }}"></script>
+    <script src="{{ asset('assets/js/main.js') }}"></script>
     <script>
         AOS.init({
             duration: 1000

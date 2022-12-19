@@ -28,7 +28,7 @@
 				<!-- small box -->
 				<div class="small-box bg-info">
 					<div class="inner">
-						<h3>{{-- $countPosts --}}</h3>
+						<h3>{{ $countComments }}</h3>
 
 						<p>Комментарии</p>
 					</div>
@@ -43,7 +43,7 @@
 				<!-- small box -->
 				<div class="small-box bg-success">
 					<div class="inner">
-						<h3>{{-- $countCats --}}</h3>
+						<h3>{{ $countLikedPosts }}</h3>
 
 						<p>Понравившиеся статьи</p>
 					</div>

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Comment;
 use App\Models\Post;
 use App\Notifications\SendVerifyWithQueueNotification;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -19,6 +20,10 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function likedPosts() {
         return $this->belongsToMany(Post::class, 'post_user_likes', 'user_id', 'post_id');
+    }
+
+    public function comments() {
+        return $this->hasMany(Comment::class, 'user_id', 'id');
     }
 
     public static function getRoles() {

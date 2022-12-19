@@ -5,7 +5,7 @@
 	<div class="container-fluid">
 		<div class="row mb-2">
 			<div class="col-md-6">
-				<a href="" class="btn btn-primary">Понравившиеся статьи</a>
+				<h4>Понравившиеся статьи</h4>
 			</div>
 			<div class="col-sm-6">
 				<ol class="breadcrumb float-sm-right">
