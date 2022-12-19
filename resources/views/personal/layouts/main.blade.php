@@ -41,6 +41,9 @@
 					</li>
 				</ul>
 				<ul class="navbar-nav">
+					<li class="nav-item mr-3">
+						<a class="btn btn-block btn-light" href="{{ route('main.index') }}">Блог</a>
+					</li>
 					<li class="nav-item">
 						<form action="{{ route('logout') }}" method="post">
 							@csrf

@@ -8,9 +8,31 @@
                 @foreach ($posts as $post)
                 <div class="col-md-4 fetured-post blog-post" data-aos="fade-right">
                     <div class="blog-post-thumbnail-wrapper">
-                        <img src="{{ 'storage/'. $post->preview_image }}" alt="blog post">
+                        <img src="{{ asset('storage/'. $post->preview_image) }}" alt="blog post">
                     </div>
-                    <p class="blog-post-category">{{ $post->category->title }}</p>
+                    <div class="d-flex justify-content-between pr-3">
+                        <p class="blog-post-category">{{ $post->category->title }}</p>
+
+                        <form action="{{  route('post.like.store', ['id' => $post->id]) }}" method="post">
+                            @csrf
+                            @if ($post->liked_users_count)
+                            <span>{{ $post->liked_users_count }}</span>
+                            @endif
+                            <button type="submit" class=" border-0 bg-transparent">
+                                @auth()
+                                @if (auth()->user()->likedPosts->contains($post->id))
+                                <i class="fas fa-heart"></i>
+                                @else
+                                <i class="far fa-heart"></i>
+                                @endif
+
+                                @endauth
+                            </button>
+                            @guest
+                            <i class="far fa-heart"></i>
+                            @endguest
+                        </form>
+                    </div>
                     <a href="{{ route('post.show', ['id' => $post->id])}}" class="blog-post-permalink">
                         <h6 class="blog-post-title">{{ $post->title }}</h6>
                     </a>
@@ -32,7 +54,30 @@
                             <div class="blog-post-thumbnail-wrapper">
                                 <img src="{{ 'storage/' . $post->preview_image }}" alt="blog post">
                             </div>
-                            <p class="blog-post-category">{{ $post->category->title }}</p>
+                            <div class="d-flex justify-content-between  pr-3">
+                                <p class="blog-post-category">{{ $post->category->title }}</p>
+                                <form action="{{  route('post.like.store', ['id' => $post->id]) }}" method="post">
+                                    @csrf
+                                    @if ($post->liked_users_count)
+                                    <span>{{ $post->liked_users_count }}</span>
+                                    @endif
+                                    <button type="submit" class=" border-0 bg-transparent">
+                                        @auth()
+                                        @if (auth()->user()->likedPosts->contains($post->id))
+                                        <i class="fas fa-heart"></i>
+                                        @else
+                                        <i class="far fa-heart"></i>
+                                        @endif
+
+                                        @endauth
+                                    </button>
+                                    @guest
+                                    <i class="far fa-heart"></i>
+                                    @endguest
+                                </form>
+                                
+                            </div>
+                            
                             <a href="{{ route('post.show', ['id' => $post->id])}}" class="blog-post-permalink">
                                 <h6 class="blog-post-title">{{ $post->title }}</h6>
                             </a>
@@ -82,36 +127,36 @@
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-md-9">
-                                           <div class="media-body">
-                                                <h6 class="post-title">{{ $post->title }}</h6>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            @if ($post->liked_users_count)
-                                                {{ $post->liked_users_count }}
-                                            @endif
-
-                                            <i class="far fa-thumbs-up"></i>
-
+                                         <div class="media-body">
+                                            <h6 class="post-title">{{ $post->title }}</h6>
                                         </div>
                                     </div>
-                                        
+                                    <div class="col-md-3">
+                                        @if ($post->liked_users_count)
+                                        {{ $post->liked_users_count }}
+                                        @endif
+
+                                        <i class="far fa-thumbs-up"></i>
+
+                                    </div>
                                 </div>
 
-                            </a>
-                        </li>
-                        @endforeach
+                            </div>
+
+                        </a>
+                    </li>
+                    @endforeach
 
 
-                    </ul>
-                </div>
-                <div class="widget">
-                    <h5 class="widget-title">Categories</h5>
-                    <img src="{{asset('assets/images/blog_widget_categories.jpg')}}" alt="categories" class="w-100">
-                </div>
+                </ul>
+            </div>
+            <div class="widget">
+                <h5 class="widget-title">Categories</h5>
+                <img src="{{asset('assets/images/blog_widget_categories.jpg')}}" alt="categories" class="w-100">
             </div>
         </div>
     </div>
+</div>
 
 </main>
 @endsection
